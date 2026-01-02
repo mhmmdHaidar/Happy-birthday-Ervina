@@ -25,8 +25,34 @@
       ></script>
    </head>
 
-   <body>
-      <div id="wrapper">
+   <body class="locked">
+      <audio id="lagu" loop>
+         <source src="./audio/hbd-website.mpeg" type="audio/mpeg" />
+         Browser kamu tidak mendukung audio.
+      </audio>
+
+      <!-- OVERLAY -->
+      <div id="overlay">
+         <div class="overlay-content">
+            <h2>Happy 21st Birthday</h2>
+            <h1>Ervina 💖</h1>
+            <p>11 Januari — Hari paling spesial</p>
+
+            <div class="photo-ring">
+               <img src="./images/ervina.jpeg" alt="" />
+               <img src="./images/ervina.jpeg" alt="" />
+               <img src="./images/ervina.jpeg" alt="" />
+               <img src="./images/ervina.jpeg" alt="" />
+               <img src="./images/ervina.jpeg" alt="" />
+               <img src="./images/ervina.jpeg" alt="" />
+               <img src="./images/ervina.jpeg" alt="" />
+            </div>
+
+            <button id="startBtn">Buka Cerita Kita ✨</button>
+         </div>
+      </div>
+
+      <div id="wrapper" class="paused">
          <div class="flag__birthday">
             <img src="./images/1.png" alt="" width="350" class="flag__left" />
             <img src="./images/1.png" alt="" width="350" class="flag__right" />
@@ -163,9 +189,28 @@
       </div>
    </body>
    <script>
+      document.body.classList.add("paused");
+
+      const btn = document.getElementById("startBtn");
+      const overlay = document.getElementById("overlay");
+      const lagu = document.getElementById("lagu");
+
+      btn.addEventListener("click", () => {
+         lagu.play();
+
+         document.body.classList.remove("paused");
+         document.body.classList.add("playing");
+         overlay.style.transition = "opacity 1.2s ease";
+         overlay.style.opacity = "0";
+
+         setTimeout(() => {
+            overlay.style.display = "none";
+         }, 2400);
+      });
+
       let datetxt = "11 Januari";
       let datatxtletter =
-         "My love. You are a very special girl. I always silently thank you for coming into my life. Today, I wish you all the best, lots of health, and lots of joy. I always hope we will celebrate many more birthdays like this together. Happy birthday to you.💕";
+         "Happy birthday sayangg🥳🎂🥳 Akhirnya tanggal 11 Januari datang juga, hari lahirnya orang paling Cantik yang aku kenal .Semoga Allah selalu menjagamu,menguatkan langkahmu, menenangkan hatimu, dan memudahkan semua impian yangsedang kamu perjuangkan. Semoga kamu selalu diberi kesehatan, rezeki yangbanyak, dan kebahagiaan. hidupmu.Selamat ulang tahun, manusia favoritku 🎉Aku sayang kamu, banyakkkk 💛✨";
       let titleLetter = "To you";
       let charArrDate = datetxt.split("");
       let charArrDateLetter = datatxtletter.split("");
@@ -187,7 +232,7 @@
                document.querySelector(".date__of__birth").appendChild(i.cloneNode(true));
                clearInterval(timeDatetxt);
             }
-         }, 100);
+         }, 500);
       }, 12000);
 
       var intervalContent;
