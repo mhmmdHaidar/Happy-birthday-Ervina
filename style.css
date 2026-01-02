@@ -43,11 +43,16 @@ body.playing * {
 #overlay {
    position: fixed;
    inset: 0;
-   background: radial-gradient(circle at top, #2b1055, #000);
-   z-index: 99999;
+   background: radial-gradient(circle at top, #3a1c71, #1a082e);
+   color: white;
    display: flex;
-   justify-content: center;
+   flex-direction: column;
    align-items: center;
+   justify-content: center;
+   gap: 20px;
+   z-index: 9999;
+   text-align: center;
+   padding: 20px;
 }
 
 .overlay-content {
@@ -75,7 +80,7 @@ body.playing * {
 }
 
 /* FOTO LINGKARAN */
-.photo-ring {
+/* .photo-ring {
    position: relative;
    width: 260px;
    height: 260px;
@@ -90,10 +95,10 @@ body.playing * {
    object-fit: cover;
    border: 2px solid rgba(255, 255, 255, 0.6);
    animation: float 6s ease-in-out infinite;
-}
+} */
 
 /* POSISI FOTO */
-.photo-ring img:nth-child(1) {
+/* .photo-ring img:nth-child(1) {
    top: 0;
    left: 95px;
 }
@@ -120,6 +125,30 @@ body.playing * {
 .photo-ring img:nth-child(7) {
    top: 95px;
    left: 95px;
+} */
+
+/* FOTO SEJAJAR */
+.memory-row {
+   display: flex;
+   justify-content: center;
+   gap: 14px;
+   flex-wrap: wrap;
+   max-width: 900px;
+}
+
+/* FOTO BULAT */
+.memory-row img {
+   width: 90px;
+   height: 90px;
+   object-fit: cover;
+   border-radius: 50%;
+   border: 3px solid rgba(255, 255, 255, 0.4);
+   box-shadow: 0 0 20px rgba(255, 105, 180, 0.4);
+   transition: transform 0.3s ease;
+}
+
+.memory-row img:hover {
+   transform: scale(1.08);
 }
 
 /* ANIMASI FLOAT */
@@ -134,36 +163,37 @@ body.playing * {
 }
 
 /* TOMBOL */
-#startBtn {
-   padding: 14px 32px;
-   border-radius: 30px;
+#start-btn {
+   margin-top: 20px;
+   padding: 14px 36px;
    border: none;
-   background: linear-gradient(135deg, #ff8acb, #ff5fa2);
+   border-radius: 999px;
+   background: linear-gradient(135deg, #ff7eb3, #ff4d9d);
    color: white;
-   font-size: 1rem;
+   font-size: 16px;
+   font-weight: bold;
    cursor: pointer;
-   transition: transform 0.3s, box-shadow 0.3s;
 }
 
-#startBtn:hover {
+#start-btn :hover {
+   -webkit-transform: scale(1.05);
+   -moz-transform: scale(1.05);
+   -ms-transform: scale(1.05);
+   -o-transform: scale(1.05);
    transform: scale(1.05);
    box-shadow: 0 10px 30px rgba(255, 138, 203, 0.4);
 }
 
 /* RESPONSIVE */
-@media (max-width: 600px) {
-   .overlay-content h1 {
-      font-size: 2.1rem;
+@media (max-width: 480px) {
+   .memory-row img {
+      width: 65px;
+      height: 65px;
    }
 
-   .photo-ring {
-      width: 220px;
-      height: 220px;
-   }
-
-   .photo-ring img {
-      width: 60px;
-      height: 60px;
+   .start-btn {
+      width: 100%;
+      max-width: 260px;
    }
 }
 
